@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_writer :login
+  has_many :chat_rooms, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
