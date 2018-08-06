@@ -48,3 +48,4 @@ end
 
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'redis', '~> 3.2'
