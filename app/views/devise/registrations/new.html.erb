@@ -11,6 +11,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :years_sober %><br />
+    <%= f.text_field :years_sober %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :catchphrase %><br />
+    <%= f.text_field :catchphrase %><br />
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
