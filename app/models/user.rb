@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_one :catchphrases, dependent: :destroy
   has_one :years_sobers, dependent: :destroy
+  has_one :bios, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]

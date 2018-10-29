@@ -21,17 +21,22 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :bio, color: "white"%><br />
+    <div id="textbox"><%= f.text_area :bio %></div><br />
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password, color: "white" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <div id="textbox"><%= f.password_field :password, autocomplete: "off" %></div>
   </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, color: "white" %><br />
+    <div id="textbox"><%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+  </div></br>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

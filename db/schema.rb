@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180808204106) do
+ActiveRecord::Schema.define(version: 20181029225158) do
 
   create_table "chat_rooms", force: :cascade do |t|
     t.string "title"
@@ -43,11 +43,15 @@ ActiveRecord::Schema.define(version: 20180808204106) do
     t.string "last_sign_in_ip"
     t.integer "years_sober_id"
     t.integer "catchphrase_id"
+    t.integer "bio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "years_sober"
     t.string "catchphrase"
+    t.text "bio"
+    t.index ["bio"], name: "index_users_on_bio"
+    t.index ["bio_id"], name: "index_users_on_bio_id"
     t.index ["catchphrase"], name: "index_users_on_catchphrase"
     t.index ["catchphrase_id"], name: "index_users_on_catchphrase_id"
     t.index ["email"], name: "index_users_on_email", unique: true
