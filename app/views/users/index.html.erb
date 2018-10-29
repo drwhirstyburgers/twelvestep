@@ -1,11 +1,11 @@
-<h1>Users</h1>
+<div class='row'>
 <% @users.each do |f| %>
-<div>
-  <div class="card-body">
-    <h5><%= f.username %></h5>
-    <h6><%= f.years_sober %></h6>
-    <p><%= f.catchphrase %></p>
-    <%= link_to "Profile", f, class: "card-link" %>
+  <div class='col-md-4'>
+  <div class="profile-card">
+    <h3><%= link_to f.username, f, class: "card-link" %></h3>
+    <h4>Time Sober: <%= f.years_sober %></h4>
+    <p>Catchphrase: "<%= f.catchphrase %>"</p>
   </div>
 </div>
 <% end %>
+</div>

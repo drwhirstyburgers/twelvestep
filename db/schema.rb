@@ -41,16 +41,20 @@ ActiveRecord::Schema.define(version: 20180808204106) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.integer "years_sober_id"
+    t.integer "catchphrase_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "years_sober"
     t.string "catchphrase"
     t.index ["catchphrase"], name: "index_users_on_catchphrase"
+    t.index ["catchphrase_id"], name: "index_users_on_catchphrase_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
     t.index ["years_sober"], name: "index_users_on_years_sober"
+    t.index ["years_sober_id"], name: "index_users_on_years_sober_id"
   end
 
 end
