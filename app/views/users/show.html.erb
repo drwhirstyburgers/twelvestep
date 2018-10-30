@@ -2,9 +2,17 @@
   <div class="contains-show">
     <%= image_tag 'profile.jpg', class: "img-show" %>
     <h2><%= @user.username %></h2>
-    <h3>Catchphrase: "<%= @user.catchphrase %>"</h3>
+    <h3>
+      Catchphrase: "<%= @user.catchphrase %>"</br>
+    </h3>
+    <h4>
+      I have <%= @user.years_sober %> years sober
+    </h4>
+    <h4>
+      My Story:
+    </h4>
     <p>
-      My story: <%= @user.bio %>
+      <%= @user.bio %>
     </p>
   </div>
 </div>
