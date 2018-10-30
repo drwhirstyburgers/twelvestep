@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row">
+  <div class="contains-show">
+    <%= image_tag 'profile.jpg', class: "img-show" %>
+    <h2><%= @user.username %></h2>
+    <h3>Catchphrase: "<%= @user.catchphrase %>"</h3>
+    <p>
+      My story: <%= @user.bio %>
+    </p>
+  </div>
+</div>

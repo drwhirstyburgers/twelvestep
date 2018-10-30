@@ -2,12 +2,10 @@
 <% @users.each do |f| %>
   <div class='col-md-4'>
   <div class="profile-card">
-    <h3><%= link_to f.username, f, class: "card-link" %></h3>
+    <%= link_to image_tag("profile.jpg", class: "img-card"), f %></h3>
+    <h3><%= link_to f.username, f %></h3>
     <h4>Time Sober: <%= f.years_sober %> years</h4>
     <p>Catchphrase: "<%= f.catchphrase %>"</p>
-    <p>Bio:</br>
-      <%= f.bio %>
-    </p>
   </div>
 </div>
 <% end %>

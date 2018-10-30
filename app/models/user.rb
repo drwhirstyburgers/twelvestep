@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_one :years_sobers, dependent: :destroy
   has_one :bios, dependent: :destroy
 
+  validates :bio, length: { maximum: 500 }, presence: true
+  validates :catchphrase, length: { in: 5..90 }, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
 
