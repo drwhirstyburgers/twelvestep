@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   attr_writer :login
   has_many :chat_rooms, dependent: :destroy
+  has_many :steppers, dependent: :destroy
+  has_many :chats_with_steppers, through: :steppers, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one :catchphrases, dependent: :destroy
   has_one :years_sobers, dependent: :destroy

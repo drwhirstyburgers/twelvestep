@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.references :years_sober, foreign_key: true
       t.references :catchphrase, foreign_key: true
       t.references :bio, foreign_key: true
+      t.references :chat_room, foreign_key: true
 
       t.timestamps null: false
     end
