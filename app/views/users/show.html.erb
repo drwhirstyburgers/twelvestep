@@ -1,6 +1,14 @@
 <div class="row">
   <div class="contains-show">
     <%= image_tag 'profile.jpg', class: "img-show" %>
+    <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
+      <div class="form-group">
+        <%= f.hidden_field :title,  :value => "Chat between #{@user.username} and #{current_user.username}" %>
+        <%= f.hidden_field :user_id,  :value => @user.id %>
+      </div>
+
+      <%= f.submit "Start a chat", class: 'btn btn-primary' %>
+    <% end %>
     <h2><%= @user.username %></h2>
     <h3>
       Catchphrase: "<%= @user.catchphrase %>"</br>

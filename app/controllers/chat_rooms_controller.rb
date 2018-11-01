@@ -13,10 +13,9 @@ class ChatRoomsController < ApplicationController
   end
 
   def create
-    @stepper = User.find(params[:id])
     @chat_room = ChatRoom.new(chat_room_params)
     @chat_room.user_id = current_user.id
-    @chat_room.user_id = @stepper.id
+
     if @chat_room.save
       flash[:success] = 'Chat room added!'
       redirect_to chat_rooms_path
