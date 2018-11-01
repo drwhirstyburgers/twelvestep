@@ -1,6 +1,6 @@
 class ChatRoomsController < ApplicationController
   def index
-    @chat_rooms = ChatRoom.where(user_id: current_user.id)
+    @chat_rooms = ChatRoom.where('user_id=? OR username=?', current_user.id, current_user.username)
   end
 
   def show
@@ -27,6 +27,6 @@ class ChatRoomsController < ApplicationController
   private
 
   def chat_room_params
-    params.require(:chat_room).permit(:title, :user_id)
+    params.require(:chat_room).permit(:title, :username)
   end
 end
