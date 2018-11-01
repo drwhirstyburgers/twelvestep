@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181029225158) do
+ActiveRecord::Schema.define(version: 20181101194852) do
+
+  create_table "ChatRooms_Users", id: false, force: :cascade do |t|
+    t.integer "ChatRoom_id", null: false
+    t.integer "User_id", null: false
+  end
 
   create_table "chat_rooms", force: :cascade do |t|
     t.string "title"
@@ -18,6 +23,13 @@ ActiveRecord::Schema.define(version: 20181029225158) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+  end
+
+  create_table "chat_rooms_users", id: false, force: :cascade do |t|
+    t.integer "chat_room_id", null: false
+    t.integer "user_id", null: false
+    t.index ["chat_room_id", "user_id"], name: "index_chat_rooms_users_on_chat_room_id_and_user_id"
+    t.index ["user_id", "chat_room_id"], name: "index_chat_rooms_users_on_user_id_and_chat_room_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -41,9 +53,7 @@ ActiveRecord::Schema.define(version: 20181029225158) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.integer "years_sober_id"
-    t.integer "catchphrase_id"
-    t.integer "bio_id"
+    t.integer "chat_room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
@@ -51,14 +61,12 @@ ActiveRecord::Schema.define(version: 20181029225158) do
     t.string "catchphrase"
     t.text "bio"
     t.index ["bio"], name: "index_users_on_bio"
-    t.index ["bio_id"], name: "index_users_on_bio_id"
     t.index ["catchphrase"], name: "index_users_on_catchphrase"
-    t.index ["catchphrase_id"], name: "index_users_on_catchphrase_id"
+    t.index ["chat_room_id"], name: "index_users_on_chat_room_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
     t.index ["years_sober"], name: "index_users_on_years_sober"
-    t.index ["years_sober_id"], name: "index_users_on_years_sober_id"
   end
 
 end
