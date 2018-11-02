@@ -1,6 +1,6 @@
 class ChatRoomsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @chat_rooms = ChatRoom.where('user_id=? OR username=?', current_user.id, current_user.username)
   end
@@ -8,6 +8,12 @@ class ChatRoomsController < ApplicationController
   def show
     @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
     @message = Message.new
+    if @chat_room.user_id == current_user.id || @chat_room.username == current_user.username
+      @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
+      @message = Message.new
+    else
+      redirect_to chat_rooms_path
+    end
   end
 
   def new
