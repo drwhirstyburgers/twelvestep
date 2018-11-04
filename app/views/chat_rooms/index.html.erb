@@ -1,5 +1,5 @@
 <h1><%= current_user.username %>'s Chats</h1>
-<% if @chat_rooms.count == 0 %>
+<% if current_user.chat_rooms.count == 0 %>
   <h3>You currently have no active chats!</h3>
 <% end %>
 <ul>
