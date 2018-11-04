@@ -1,1 +1,4 @@
-<li><%= link_to "Enter #{chat_room.title}", chat_room_path(chat_room) %></li>
+<div class="contains-index">
+  <h4><%= link_to "Enter #{chat_room.title}", chat_room_path(chat_room) %></h4>
+  <small>Created at <%= chat_room.created_at.to_formatted_s(:short) %></small>
+</div>

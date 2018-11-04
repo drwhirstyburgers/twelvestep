@@ -18,15 +18,11 @@ class ChatRoomsController < ApplicationController
     end
   end
 
-  def new
-    @chat_room = ChatRoom.new
-  end
-
   def create
     @chat_rooms = ChatRoom.all
 
     @chat_rooms.each do |cr|
-      if cr.user_id == current_user.id || cr.username == current_user.username
+      if cr.user_id == current_user.id && cr.username == @user.username
         redirect_to chat_rooms_path and return
       end
     end
