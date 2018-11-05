@@ -42,6 +42,18 @@ class ChatRoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @chat_room = ChatRoom.find(params[:id])
+
+    if @chat_room.destroy
+      flash[:notice] = "Chat with \"#{@chat_room.title}\" was ended."
+      redirect_to chat_rooms_path
+    else
+      flash.now[:alert] = "There was an error."
+      redirect_to chat_rooms_path
+    end
+  end
+
   private
 
   def chat_room_params

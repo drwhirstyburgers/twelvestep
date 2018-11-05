@@ -1,4 +1,7 @@
 <div class="contains-index">
+  <div class="pull-right">
+    <%= link_to "End Chat", chat_room, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this chat?'} %>
+  </div>
   <% if current_user.username == chat_room.title %>
     <h4><%= link_to chat_room.users.first.username, chat_room_path(chat_room) %></h4>
     <small>Started at <%= chat_room.created_at.to_formatted_s(:short) %></small>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :create]
 
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :chat_rooms, only: [:new, :create, :show, :index, :destroy]
 
   match "/chat_rooms" => "chat_rooms#create", :as => "create_chat", via: [:get, :post]
 
