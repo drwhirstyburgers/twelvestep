@@ -2,7 +2,8 @@ class ChatRoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @chat_rooms = current_user.chat_rooms
+    @user = current_user
+    @chat_rooms = @user.chat_rooms
   end
 
   def show
@@ -19,17 +20,19 @@ class ChatRoomsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @chat_rooms = ChatRoom.all
-    @other_user = params[:chat_room][:user]
+    stepper = User.where(username: params[:chat_room][:title])
 
     @chat_rooms.each do |cr|
-      if cr.users.includes(current_user)  && cr.users.includes(@other_user)
+      if cr.users.includes(@user) && cr.users.includes(stepper)
         redirect_to chat_room_path(cr) and return
       end
     end
 
     @chat_room = ChatRoom.new(chat_room_params)
-    @chat_room.users << current_user
+    @chat_room.users.push(@user, stepper)
+
 
     if @chat_room.save
       flash[:success] = 'Chat room added!'
@@ -42,6 +45,6 @@ class ChatRoomsController < ApplicationController
   private
 
   def chat_room_params
-    params.require(:chat_room).permit(:title, :users)
+    params.require(:chat_room).permit(:title)
   end
 end

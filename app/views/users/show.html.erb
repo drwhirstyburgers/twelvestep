@@ -3,8 +3,7 @@
     <%= image_tag 'profile.jpg', class: "img-show" %>
     <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
       <div class="form-group">
-        <%= f.hidden_field :title,  :value => "Chat between #{@user.username} and #{current_user.username}" %>
-        <%= f.hidden_field :users,  :value => @user %>
+        <%= f.hidden_field :title,  :value => "#{@user.username}" %>
       </div>
 
       <%= f.submit "Start a chat", class: 'btn btn-primary' %>
