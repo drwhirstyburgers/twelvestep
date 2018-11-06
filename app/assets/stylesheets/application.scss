@@ -84,8 +84,8 @@
 
  .contain-chat {
    width: 100% auto;
-   margin: 100px auto;
-   min-height: 800px auto;
+   margin: 20px auto;
+   min-height: 800px;
    align-items:  center;
    padding: 15px;
    background: black;
@@ -108,5 +108,14 @@
    border: 1px solid #ddd;
    border-radius: 40px;
    width: auto;
+   min-height: 600px;
    padding: 20px;
+   display: flex;
+   justify-content: flex-end;
+   flex-direction: column;
+   word-wrap: break-word; 
+ }
+
+ .content {
+   max-height: 200px;
  }
