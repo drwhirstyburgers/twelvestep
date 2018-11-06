@@ -5,11 +5,9 @@
     <h1><%= @chat_room.title %></h1>
   <% end %>
 
-<div class="chat-message-box">
-  <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
+  <div class="chat-message-box" id="messages" data-chat-room-id="<%= @chat_room.id %>">
     <%= render @chat_room.messages %>
   </div>
-</div>
 
 <%= form_for @message, url: '#' do |f| %>
 <div class="row">
@@ -20,3 +18,11 @@
 </div>
 <% end %>
 </div>
+
+<script>
+$('#text-box').keypress(function(e){
+      if(e.which == 13){
+           $(this).closest('form').submit();
+       }
+    });
+</script>
