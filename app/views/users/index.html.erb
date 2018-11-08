@@ -1,12 +1,59 @@
-<div class='row'>
-<% @users.each do |f| %>
-  <div class='col-md-4'>
-  <div class="profile-card">
-    <%= link_to image_tag("profile.jpg", class: "img-card"), f %></h3>
-    <h3><%= link_to f.username, f %></h3>
-    <h4>Time Sober: <%= f.years_sober %> years</h4>
-    <p>Catchphrase: "<%= f.catchphrase %>"</p>
+<div class="container">
+  <div class='row'>
+    <div class="col">
+      <% if @users.count == 0 %>
+        <div class="contains">
+          <h3>There are currently no active users! Check back soon!</h3>
+        </div>
+      <% end %>
+      <% if current_user.favorited_users.any? %>
+        <div class="contains">
+          <h3>Favorites</h3>
+          <div>
+            <% @favorites.each do |favorite| %>
+              <div class='col-md-4'>
+                <div class="profile-card">
+                  <%= link_to image_tag("profile.jpg", class: "img-card"), favorite %></h3>
+                  <h3><%= link_to favorite.username, favorite %></h3>
+                  <h4>Time Sober: <%= favorite.years_sober %> years</h4>
+                  <p>Catchphrase: "<%= favorite.catchphrase %>"</p>
+                  <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
+                    <div class="form-group">
+                      <%= f.hidden_field :title,  :value => "#{favorite.username}" %>
+                    </div>
+
+                    <%= f.submit "Chat", class: 'btn btn-primary' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-<% end %>
+<div class="container">
+  <div class='row'>
+    <div class="col">
+      <h3>Users</h3>
+      <% @users.each do |user| %>
+        <div class='col-md-4'>
+          <div class="profile-card">
+            <%= link_to image_tag("profile.jpg", class: "img-card"), user %></h3>
+            <h3><%= link_to user.username, user %></h3>
+            <h4>Time Sober: <%= user.years_sober %> years</h4>
+            <p>Catchphrase: "<%= user.catchphrase %>"</p>
+            <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
+              <div class="form-group">
+                <%= f.hidden_field :title,  :value => "#{user.username}" %>
+              </div>
+
+              <%= f.submit "Chat", class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
