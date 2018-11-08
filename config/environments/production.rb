@@ -40,9 +40,9 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Mount Action Cable outside main process or domain
-  # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+   config.action_cable.mount_path = nil
+   config.action_cable.url = 'ws://twelfthstep.herokuapp.com/cable'
+   config.action_cable.allowed_request_origins = [ 'http://www.12step.in', /http:\/\/twelfthstep.herokuapp.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -90,6 +90,4 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: '12step.herokuapp.com' }
-  config.middleware.use ChatActionCable
-  config.web_socket_server_url = "wss://twelfthstep.herokuapp.com/"
 end
