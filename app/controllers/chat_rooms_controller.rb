@@ -24,7 +24,7 @@ class ChatRoomsController < ApplicationController
     stepper = User.where(username: params[:chat_room][:title])
 
     @chat_rooms.each do |cr|
-      if cr.users.includes(@user) && cr.users.includes(stepper)
+      if cr.users.include?(@user) && cr.users.include?(stepper)
         redirect_to chat_room_path(cr) and return
       end
     end
