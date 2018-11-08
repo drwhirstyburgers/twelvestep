@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181104013343) do
+ActiveRecord::Schema.define(version: 20181108165425) do
 
   create_table "chat_room_users", force: :cascade do |t|
     t.integer "user_id"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20181104013343) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "favorited_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favorited_user_id"], name: "index_favorites_on_favorited_user_id"
+    t.index ["user_id", "favorited_user_id"], name: "index_favorites_on_user_id_and_favorited_user_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
