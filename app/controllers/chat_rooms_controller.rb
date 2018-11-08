@@ -2,8 +2,7 @@ class ChatRoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @user = current_user
-    @chat_rooms = @user.chat_rooms
+    @chat_rooms = current_user.chat_rooms
   end
 
   def show
@@ -46,7 +45,7 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.find(params[:id])
 
     if @chat_room.destroy
-      flash[:notice] = "Chat with \"#{@chat_room.title}\" was ended."
+      flash[:notice] = "Chat has been terminated."
       redirect_to chat_rooms_path
     else
       flash[:alert] = "There was an error."

@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
       redirect_to users_path
     else
       user.favorited_users << favorited_user
-      flash[:notice] = '#{favorited_user.username} favorited!'
+      flash[:notice] = "#{favorited_user.username} favorited!"
       redirect_to users_path
     end
   end

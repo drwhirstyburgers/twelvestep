@@ -6,7 +6,7 @@
         <%= f.hidden_field :title,  :value => "#{@user.username}" %>
       </div>
 
-      <%= f.submit "Start a chat", class: 'btn btn-primary' %>
+      <%= f.submit "Chat", class: 'btn btn-primary' %>
     <% end %>
   </br>
     <% if current_user.favorited_users.include?(@user) %>
