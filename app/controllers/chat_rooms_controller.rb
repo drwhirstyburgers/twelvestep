@@ -49,7 +49,7 @@ class ChatRoomsController < ApplicationController
       flash[:notice] = "Chat with \"#{@chat_room.title}\" was ended."
       redirect_to chat_rooms_path
     else
-      flash.now[:alert] = "There was an error."
+      flash[:alert] = "There was an error."
       redirect_to chat_rooms_path
     end
   end

@@ -8,6 +8,16 @@
 
       <%= f.submit "Start a chat", class: 'btn btn-primary' %>
     <% end %>
+  </br>
+    <% if current_user.favorited_users.include?(@user) %>
+      <%= link_to user_favorite_path(:user_id => @user.id), class: 'btn btn-danger', method: :delete do %>
+        <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+      <% end %>
+    <% else %>
+      <%= link_to user_favorites_path(:user_id => @user.id), class: 'btn btn-primary', method: :post do %>
+        <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite
+      <% end %>
+    <% end %>
     <h2><%= @user.username %></h2>
     <h3>
       Catchphrase: "<%= @user.catchphrase %>"</br>

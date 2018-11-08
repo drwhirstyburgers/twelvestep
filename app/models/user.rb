@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :chat_room_users, dependent: :destroy
   has_many :chat_rooms, through: :chat_room_users, dependent: :destroy
   has_many :favorites
-  has_many :favorited_users, through: :favorites
+  has_many :favorited_users, through: :favorites, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one :catchphrases, dependent: :destroy
   has_one :years_sobers, dependent: :destroy
