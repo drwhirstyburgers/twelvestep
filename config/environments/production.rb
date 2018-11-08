@@ -90,4 +90,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: '12step.herokuapp.com' }
+  config.middleware.use ChatActionCable
+  config.web_socket_server_url = "wss://twelfthstep.herokuapp.com/"
 end
