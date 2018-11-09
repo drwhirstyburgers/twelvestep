@@ -21,11 +21,11 @@ class ChatRoomsController < ApplicationController
   def create
     user = current_user
     chat_rooms = user.chat_rooms
-    stepper = User.where(username: params[:chat_room][:title])
+    stepper = User.find_by(username: params[:chat_room][:title])
 
     chat_rooms.each do |f|
-      if f.users.include?(stepper)
-        redirect_to chat_rooms_path(f)
+      if f.user_ids.include?(current_user.id) && f.user_ids.include?(stepper.id)
+        redirect_to f and return
       end
     end
 
