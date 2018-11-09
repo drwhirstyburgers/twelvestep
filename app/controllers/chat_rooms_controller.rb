@@ -19,25 +19,22 @@ class ChatRoomsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @chat_rooms = ChatRoom.all
+    user = current_user
+    chat_rooms = user.chat_rooms
     stepper = User.where(username: params[:chat_room][:title])
 
-    @chat_rooms.each do |cr|
-      if cr.users.include?(@user) && cr.users.include?(stepper)
-        redirect_to chat_room_path(cr) and return
+    chat_rooms.each do |f|
+      if f.users.include?(stepper)
+        redirect_to chat_rooms_path(f)
       end
     end
 
-    @chat_room = ChatRoom.new(chat_room_params)
-    @chat_room.users.push(@user, stepper)
+    @chat_room_new = ChatRoom.new(chat_room_params)
+    @chat_room_new.users.push(user, stepper)
 
-
-    if @chat_room.save
-      flash[:success] = 'Chat room added!'
-      redirect_to chat_room_path(@chat_room)
-    else
-      redirect_to chat_rooms_path
+    if @chat_room_new.save
+      flash[:notice] = "Chat begun!"
+      redirect_to @chat_room_new
     end
   end
 
