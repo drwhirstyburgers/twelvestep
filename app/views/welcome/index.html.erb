@@ -1,2 +1,12 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="contains">
+  <h1 class="display-4">Welcome to 12Step!</h1>
+  <p class="lead">Having a rough day? On the verge of a relapse? Sometimes we just need
+    someone who we can talk to and, more importantly, relate to. 12Step is an anonymous chat
+    app for people in recovery that seeks to fulfill that need.
+  </p>
+  <hr class="my-4">
+  <p>
+    Click <%= link_to "here", new_user_session_path %> to sign in or
+    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+  </p>
+</div>

@@ -1,21 +1,28 @@
 <div class="row">
   <div class="contains-show">
-    <%= image_tag 'profile.jpg', class: "img-show" %>
-    <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
-      <div class="form-group">
-        <%= f.hidden_field :title,  :value => "#{@user.username}" %>
+    <%= image_tag 'profile.jpg', class: "img-show" %></br>
+    <% if @user == current_user %>
+      </br>
+      <div>
+        <%= link_to "Update Profile", edit_user_registration_path(current_user), class: 'btn btn-primary' %>
       </div>
-
-      <%= f.submit "Chat", class: 'btn btn-primary' %>
-    <% end %>
-  </br>
-    <% if current_user.favorited_users.include?(@user) %>
-      <%= link_to user_favorite_path(:user_id => @user.id), class: 'btn btn-danger', method: :delete do %>
-        <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
-      <% end %>
     <% else %>
-      <%= link_to user_favorites_path(:user_id => @user.id), class: 'btn btn-primary', method: :post do %>
-        <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite
+      <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :title,  :value => "#{@user.username}" %>
+        </div>
+
+        <%= f.submit "Chat", class: 'btn btn-primary' %>
+      <% end %>
+    </br>
+      <% if current_user.favorited_users.include?(@user) %>
+        <%= link_to user_favorite_path(:user_id => @user.id), class: 'btn btn-danger', method: :delete do %>
+          <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+        <% end %>
+      <% else %>
+        <%= link_to user_favorites_path(:user_id => @user.id), class: 'btn btn-primary', method: :post do %>
+          <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite
+        <% end %>
       <% end %>
     <% end %>
     <h2><%= @user.username %></h2>
