@@ -33,8 +33,8 @@
 <div class="container">
   <div class='row'>
     <div class="col">
-      <% if @users.any? %>
       <h3>Active Users</h3>
+      <% if @users.any? %>
       <% @users.each do |user| %>
         <div class='col-md-4'>
           <div class="profile-card">
@@ -52,6 +52,10 @@
           </div>
         </div>
       <% end %>
+      <% else %>
+        <div class="contains-none">
+          <h3>There are currently no active users! Check back soon!</h3>
+        </div>
       <% end %>
     </div>
   </div>
