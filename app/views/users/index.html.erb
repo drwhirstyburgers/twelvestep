@@ -7,9 +7,10 @@
         </div>
       <% end %>
       <% if current_user.favorited_users.any? %>
-          <h3>Favorites</h3>
+        <h3>Favorites</h3>
           <div>
             <% @favorites.each do |favorite| %>
+            <% if favorite.current_sign_in_at < 15.minute.ago %>
               <div class='col-md-4'>
                 <div class="profile-card">
                   <%= link_to image_tag("profile.jpg", class: "img-card"), favorite %></h3>
@@ -26,6 +27,7 @@
               </div>
             </div>
           <% end %>
+          <% end %>
         <% end %>
     </div>
   </div>
@@ -35,6 +37,7 @@
     <div class="col">
       <h3>Users</h3>
       <% @users.each do |user| %>
+      <% if user.current_sign_in_at < 15.minute.ago %>
         <div class='col-md-4'>
           <div class="profile-card">
             <%= link_to image_tag("profile.jpg", class: "img-card"), user %></h3>
@@ -50,6 +53,9 @@
             <% end %>
           </div>
         </div>
+      <% else %>
+        <h2>There are currently no active users!</h2>
+      <% end %>
       <% end %>
     </div>
   </div>
