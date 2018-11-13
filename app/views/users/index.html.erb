@@ -1,11 +1,6 @@
 <div class="container">
   <div class='row'>
     <div class="col">
-      <% if @users.count == 0  && @favorites.count == 0 %>
-        <div class="contains">
-          <h3>There are currently no active users! Check back soon!</h3>
-        </div>
-      <% end %>
       <% if current_user.favorited_users.any? %>
         <h3>Favorites</h3>
           <div>
