@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :catchphrase, length: { in: 5..90 }, presence: true
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
+         :recoverable, :rememberable, :trackable, :lastseenable, :validatable, authentication_keys: [:login]
 
   def login
     @login || self.username || self.email

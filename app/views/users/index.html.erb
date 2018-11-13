@@ -10,13 +10,12 @@
         <h3>Favorites</h3>
           <div>
             <% @favorites.each do |favorite| %>
-            <% if favorite.current_sign_in_at < 15.minute.ago %>
               <div class='col-md-4'>
                 <div class="profile-card">
                   <%= link_to image_tag("profile.jpg", class: "img-card"), favorite %></h3>
                   <h3><%= link_to favorite.username, favorite %></h3>
                   <h4>Time Sober: <%= favorite.years_sober %> years</h4>
-                  <p>Catchphrase: "<%= favorite.catchphrase %>"</p>
+                  <small>Last seen: <%= favorite.last_seen.to_formatted_s(:short) %></small>
                   <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
                     <div class="form-group">
                       <%= f.hidden_field :title,  :value => "#{favorite.username}" %>
@@ -27,7 +26,6 @@
               </div>
             </div>
           <% end %>
-          <% end %>
         <% end %>
     </div>
   </div>
@@ -37,7 +35,6 @@
     <div class="col">
       <h3>Users</h3>
       <% @users.each do |user| %>
-      <% if user.current_sign_in_at < 15.minute.ago %>
         <div class='col-md-4'>
           <div class="profile-card">
             <%= link_to image_tag("profile.jpg", class: "img-card"), user %></h3>
@@ -53,9 +50,6 @@
             <% end %>
           </div>
         </div>
-      <% else %>
-        <h2>There are currently no active users!</h2>
-      <% end %>
       <% end %>
     </div>
   </div>
