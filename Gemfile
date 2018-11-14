@@ -51,3 +51,4 @@ gem 'devise'
 gem 'redis', '~> 3.2'
 gem 'coffee-rails'
 gem 'devise_lastseenable'
+gem 'whenever', require: false
