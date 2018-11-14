@@ -42,12 +42,14 @@
             </ul>
           </div>
         </div>
+        <% if mobile_device == "desktop" || mobile_device == "tablet"  %>
         <div class="col-md-6">
-          <%= form_tag(users_path, method: 'get', class: 'navbar-form navbar-right', display: 'float') do %>
+          <%= form_tag(users_path, method: 'get', class: 'navbar-form navbar-right') do %>
             <%= search_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for a user...'  %>
             <%= submit_tag "Search", class: 'btn btn-default', :name => nil %>
           <% end %>
         </div>
+        <% end %>
       </div>
     </div>
 
