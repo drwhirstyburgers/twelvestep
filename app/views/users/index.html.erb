@@ -12,6 +12,8 @@
                   <h4>Time Sober: <%= favorite.years_sober %> years</h4>
                   <% if favorite.last_seen != nil %>
                     <small>Last seen: <%= favorite.last_seen.to_formatted_s(:short) %></small>
+                  <% else %>
+                    <p>Catchphrase: "<%= favorite.catchphrase %>"</p>
                   <% end %>
                   <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
                     <div class="form-group">
