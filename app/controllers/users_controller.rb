@@ -1,8 +1,18 @@
 class UsersController < ApplicationController
   def index
-    @users = User.where.not(id: current_user.id).where('last_seen > ?',10.minutes.ago)
-    @favorites = current_user.favorited_users
+    @users = User.all
     @chat_room = ChatRoom.new
+
+    if params[:search]
+      @users = User.search(params[:search]).order("created_at DESC")
+        if @users.count == 0
+          [flash[:alert] = "#{params[:search]} was not found"]
+          redirect_to users_path
+        end
+    else
+      @users = User.where.not(id: current_user.id).where('last_seen > ?',10.minutes.ago)
+      @favorites = current_user.favorited_users
+    end
   end
 
   def show

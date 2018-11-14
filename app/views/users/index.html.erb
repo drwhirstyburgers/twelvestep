@@ -1,7 +1,7 @@
 <div class="container">
   <div class='row'>
     <div class="col">
-      <% if current_user.favorited_users.any? %>
+      <% if current_user.favorited_users.any? && @favorites != nil %>
         <h3>Favorites</h3>
           <div>
             <% @favorites.each do |favorite| %>
@@ -32,7 +32,7 @@
 <div class="container">
   <div class='row'>
     <div class="col">
-      <h3>Active Users</h3>
+      <h3>Users</h3>
       <% if @users.any? %>
       <% @users.each do |user| %>
         <div class='col-md-4'>

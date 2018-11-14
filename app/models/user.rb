@@ -27,4 +27,8 @@ class User < ApplicationRecord
         where(conditions.to_h).first
       end
   end
+
+  def self.search(search)
+    where("username LIKE ?", "%#{search}%") 
+  end
 end
