@@ -128,3 +128,22 @@
    font-weight: 200;
    border: 1px solid #ddd;
  }
+
+ .contains-search {
+   width: 100% auto;
+   margin: 10px auto;
+   margin-bottom: 20px;
+   margin-top: 10px;
+   align-items:  center;
+   padding: 20px;
+   background: black;
+   background-color: rgba(0,0,0,0.6);
+   text-align: left;
+   color: white;
+   border-radius: 40px;
+   font-family: arial, Helvetica;
+   font-weight: 200;
+   border: 1px solid #ddd;
+   display: flex;
+   flex-direction: row;
+ }
