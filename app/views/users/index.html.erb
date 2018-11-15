@@ -3,9 +3,9 @@
     <div class="col">
       <% if mobile_device == 'mobile' || mobile_device == 'tablet' %>
         <div class="contains-search">
-          <%= form_tag(users_path, method: 'get') do %>
+          <%= form_tag(users_path, method: 'get', class: 'navbar-form navbar-right') do %>
             <%= search_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for a user...'  %>
-            <%= submit_tag "Search", class: 'btn btn-primary', :name => nil %>
+            <%= submit_tag "Search", class: 'btn btn-default', :name => nil %>
           <% end %>
         </div>
       <% end %>
