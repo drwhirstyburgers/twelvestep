@@ -10,10 +10,9 @@
                   <%= link_to image_tag("profile.jpg", class: "img-card"), favorite %></h3>
                   <h3><%= link_to favorite.username, favorite %></h3>
                   <h4>Time Sober: <%= favorite.years_sober %> years</h4>
+                  <p>Catchphrase: "<%= favorite.catchphrase %>"</p>
                   <% if favorite.last_seen != nil %>
                     <small>Last seen: <%= favorite.last_seen.to_formatted_s(:short) %></small>
-                  <% else %>
-                    <p>Catchphrase: "<%= favorite.catchphrase %>"</p>
                   <% end %>
                   <%= form_for @chat_room, url: create_chat_path(@chat_room) do |f| %>
                     <div class="form-group">

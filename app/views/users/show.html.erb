@@ -32,6 +32,9 @@
     <h4>
       I have <%= @user.years_sober %> years sober
     </h4>
+    <% if @user.last_seen != nil && @user != current_user %>
+      <small>Last seen: <%= @user.last_seen.to_formatted_s(:short) %></small>
+    <% end %>
     <h4>
       My Story:
     </h4>
