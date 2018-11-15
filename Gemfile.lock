@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_interceptor (1.1.0)
+      rails (>= 3.1)
     actioncable (5.1.6)
       actionpack (= 5.1.6)
       nio4r (~> 2.0)
@@ -41,6 +43,10 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (9.1.0)
       execjs
+    baby_squeel (1.3.1)
+      activerecord (>= 4.2.0)
+      join_dependency (~> 0.1.2)
+      polyamorous (~> 1.3)
     bcrypt (3.1.12)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
@@ -72,6 +78,12 @@ GEM
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
+    fine_print (4.0.1)
+      action_interceptor (>= 1.0)
+      baby_squeel
+      jquery-rails
+      rails (>= 4.2)
+      responders
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.0.1)
@@ -79,6 +91,8 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    join_dependency (0.1.4)
+      activerecord (>= 4.2.0)
     jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -101,6 +115,8 @@ GEM
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pg (1.0.0)
+    polyamorous (1.3.3)
+      activerecord (>= 3.0)
     puma (3.12.0)
     rack (2.0.5)
     rack-test (1.1.0)
@@ -212,6 +228,7 @@ DEPENDENCIES
   coffee-rails
   devise
   devise_lastseenable
+  fine_print
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
+  mount FinePrint::Engine => "/fine_print"
+
   get 'welcome/index'
 
   get 'welcome/about'
