@@ -35,6 +35,9 @@
                 <li><%= link_to "Chats", chat_rooms_path %></li>
                 <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
                 <li><%= link_to current_user.username, current_user  %></li>
+                  <% if mobile_device == 'tablet' || mobile_device == 'mobile' %>
+                    <li><% link_to "Search", users_search_path %></li>
+                  <% end %>
               <% else %>
                 <li><%= link_to "Sign In", new_user_session_path  %></li>
                 <li><%= link_to "Sign Up", new_user_registration_path  %></li>
@@ -42,7 +45,7 @@
             </ul>
           </div>
         </div>
-        <% if mobile_device == "desktop" || mobile_device == "tablet"  %>
+        <% if mobile_device == "desktop"  %>
         <div class="col-md-6">
           <%= form_tag(users_path, method: 'get', class: 'navbar-form navbar-right') do %>
             <%= search_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for a user...'  %>

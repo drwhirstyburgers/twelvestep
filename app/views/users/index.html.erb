@@ -1,6 +1,14 @@
 <div class="container">
   <div class='row'>
     <div class="col">
+      <% if mobile_device == 'mobile' || mobile_device == 'tablet' %>
+        <div class="contains">
+          <%= form_tag(users_path, method: 'get', class: 'form-control') do %>
+            <%= search_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for a user...'  %>
+            <%= submit_tag "Search", class: 'btn btn-primary', :name => nil %>
+          <% end %>
+        </div>
+      <% end %>
       <% if current_user.favorited_users.any? && @favorites != nil %>
         <h3>Favorites</h3>
           <div>
