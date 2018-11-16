@@ -8,9 +8,11 @@ class User < ApplicationRecord
   has_one :catchphrases, dependent: :destroy
   has_one :years_sobers, dependent: :destroy
   has_one :bios, dependent: :destroy
+  has_one :terms_of_services, dependent: :destroy
 
   validates :bio, length: { maximum: 500 }, presence: true
   validates :catchphrase, length: { in: 5..90 }, presence: true
+  validates_acceptance_of :terms_of_service
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :lastseenable, :validatable, authentication_keys: [:login]
@@ -29,6 +31,6 @@ class User < ApplicationRecord
   end
 
   def self.search(search)
-    where("username LIKE ?", "%#{search}%") 
+    where("username LIKE ?", "%#{search}%")
   end
 end
