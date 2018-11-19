@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :catchphrases, dependent: :destroy
   has_one :years_sobers, dependent: :destroy
   has_one :bios, dependent: :destroy
+  has_many :terms
 
   validates :bio, length: { maximum: 500 }, presence: true
   validates :catchphrase, length: { in: 5..90 }, presence: true
@@ -29,6 +30,6 @@ class User < ApplicationRecord
   end
 
   def self.search(search)
-    where("username LIKE ?", "%#{search}%") 
+    where("username LIKE ?", "%#{search}%")
   end
 end

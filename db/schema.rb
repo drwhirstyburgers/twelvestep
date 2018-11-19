@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181113214625) do
+ActiveRecord::Schema.define(version: 20181119200907) do
 
   create_table "chat_room_users", force: :cascade do |t|
     t.integer "user_id"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 20181113214625) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "terms", force: :cascade do |t|
+    t.text "body"
+    t.boolean "agree"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_terms_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,10 +74,12 @@ ActiveRecord::Schema.define(version: 20181113214625) do
     t.string "catchphrase"
     t.text "bio"
     t.datetime "last_seen"
+    t.boolean "terms_of_service", default: false
     t.index ["bio"], name: "index_users_on_bio"
     t.index ["catchphrase"], name: "index_users_on_catchphrase"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["terms_of_service"], name: "index_users_on_terms_of_service"
     t.index ["username"], name: "index_users_on_username", unique: true
     t.index ["years_sober"], name: "index_users_on_years_sober"
   end

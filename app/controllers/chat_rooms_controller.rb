@@ -1,5 +1,6 @@
 class ChatRoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :terms
 
   def index
     @chat_rooms = current_user.chat_rooms

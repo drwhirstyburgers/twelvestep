@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :terms
 
   def index
     @users = User.all
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
 
     if params[:search] == "all"
       @users = User.all
-    elsif params[:search]      
+    elsif params[:search]
       @users = User.search(params[:search]).order("created_at DESC")
         if @users.count == 0
           [flash[:alert] = "#{params[:search]} was not found"]

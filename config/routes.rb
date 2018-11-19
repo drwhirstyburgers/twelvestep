@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :create] do
     resources :favorites, only: [:create, :destroy]
+    resources :terms, only: [:new, :create]
   end
 
   resources :chat_rooms, only: [:new, :create, :show, :index, :destroy]
