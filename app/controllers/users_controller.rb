@@ -5,7 +5,9 @@ class UsersController < ApplicationController
     @users = User.all
     @chat_room = ChatRoom.new
 
-    if params[:search]
+    if params[:search] == "all"
+      @users = User.all
+    elsif params[:search]      
       @users = User.search(params[:search]).order("created_at DESC")
         if @users.count == 0
           [flash[:alert] = "#{params[:search]} was not found"]

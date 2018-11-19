@@ -11,7 +11,6 @@
       <% end %>
       <% if current_user.favorited_users.any? && @favorites != nil %>
         <h3>Favorites</h3>
-          <div>
             <% @favorites.each do |favorite| %>
               <div class='col-md-4'>
                 <div class="profile-card">
@@ -29,7 +28,6 @@
                     <%= f.submit "Chat", class: 'btn btn-primary' %>
                   <% end %>
                 </div>
-              </div>
             </div>
           <% end %>
         <% end %>
