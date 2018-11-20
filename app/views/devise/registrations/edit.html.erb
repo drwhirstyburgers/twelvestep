@@ -35,6 +35,11 @@
       <%= f.text_area :bio, class: 'form-control' %><br />
     </div>
 
+    <div class="field">
+      <%= f.label "I am looking for: ", color: "white"%>
+      <%= f.collection_radio_buttons :role, [[:seeker, 'Help  '], [:stepper, 'I want to help someone!']], :first, :last %>
+    </div>
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>

@@ -5,13 +5,13 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorited_users, through: :favorites, dependent: :destroy
   has_many :messages, dependent: :destroy
-  has_one :catchphrases, dependent: :destroy
-  has_one :years_sobers, dependent: :destroy
-  has_one :bios, dependent: :destroy
   has_many :terms
 
   validates :bio, length: { maximum: 500 }, presence: true
   validates :catchphrase, length: { in: 5..90 }, presence: true
+  validates :role, presence: true
+
+  enum role: [:seeker, :stepper, :admin]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :lastseenable, :validatable, authentication_keys: [:login]

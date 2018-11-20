@@ -5,6 +5,8 @@
     password: 'password',
     catchphrase: "ODAAT",
     bio: "I HATE EVERYTHING AND I SUCK",
-    years_sober: 5
+    years_sober: 5,
+    role: 0,
+    last_seen: Time.now
   )
 end

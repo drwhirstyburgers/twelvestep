@@ -14,10 +14,16 @@ class UsersController < ApplicationController
           [flash[:alert] = "#{params[:search]} was not found"]
           redirect_to users_path
         end
-    else
-      @users = User.where.not(id: current_user.id).where('last_seen > ?',10.minutes.ago)
+    elsif current_user.stepper?
+      @users = User.where.not(id: current_user.id).where('last_seen > ?',10.minutes.ago).where(role: "seeker")
       @favorites = current_user.favorited_users
-    end
+    elsif current_user.seeker?
+      @users = User.where.not(id: current_user.id).where('last_seen > ?',10.minutes.ago).where(role: "stepper")
+      @favorites = current_user.favorited_users
+    elsif current_user.admin?
+      @users = User.all
+      @favorites = current_user.favorited_users
+    end      
   end
 
   def show

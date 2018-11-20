@@ -36,6 +36,11 @@
     </div>
 
     <div class="field">
+      <%= f.label "I am looking for: ", color: "white"%>
+      <%= f.collection_radio_buttons :role, [[:seeker, 'Help  '], [:stepper, 'I want to help someone!']], :first, :last %>
+    </div>
+
+    <div class="field">
       <%= f.label :password, color: "white" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
