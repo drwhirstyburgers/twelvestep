@@ -27,6 +27,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     @chat_room = ChatRoom.new
