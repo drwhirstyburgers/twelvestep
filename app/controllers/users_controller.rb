@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :terms
+  before_action :choose_role
 
   def index
     @users = User.all
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
     elsif current_user.admin?
       @users = User.all
       @favorites = current_user.favorited_users
-    end      
+    end
   end
 
   def show

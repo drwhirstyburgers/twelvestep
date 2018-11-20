@@ -9,7 +9,6 @@ class User < ApplicationRecord
 
   validates :bio, length: { maximum: 500 }, presence: true
   validates :catchphrase, length: { in: 5..90 }, presence: true
-  validates :role, presence: true
 
   enum role: [:seeker, :stepper, :admin]
 

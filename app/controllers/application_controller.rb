@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def choose_role
+    if current_user.role == nil
+      redirect_to edit_user_registration_path
+      flash[:alert] = "Whoops! Please choose what you're here for!"
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
