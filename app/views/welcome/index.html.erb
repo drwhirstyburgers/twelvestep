@@ -6,8 +6,15 @@
     and self-destruct after 24 hours.
   </p>
   <hr class="my-4">
-  <p>
-    Click <%= link_to "here", new_user_session_path %> to sign in or
-    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
-  </p>
+  <% if current_user %>
+  <a data-toggle="modal" href="#myModal" class='btn btn-primary'>What brings you today?</a>
+  <div class="modal" id="myModal">
+    <%= render 'shared/status' %>
+  </div>
+  <% else %>
+    <p>
+      Click <%= link_to "here", new_user_session_path %> to sign in or
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+    </p>
+  <% end %>
 </div>
