@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
+
   devise_for :users
 
   resources :users, only: [:index, :show, :create] do

@@ -7,10 +7,10 @@
   </p>
   <hr class="my-4">
   <% if current_user %>
-  <div align="center"><a data-toggle="modal" href="#myModal" class='btn btn-primary'>What brings you today?</a></div>
-  <div class="modal" id="myModal">
-    <%= render 'shared/status' %>
-  </div>
+    <div align="center"><a data-toggle="modal" href="#myModal" class='btn btn-primary'>What brings you today?</a></div>
+    <div class="modal" id="myModal">
+      <%= render 'shared/status' %>
+    </div>
   <% else %>
     <p>
       Click <%= link_to "here", new_user_session_path %> to sign in or
