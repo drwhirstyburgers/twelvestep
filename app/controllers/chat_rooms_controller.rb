@@ -36,6 +36,11 @@ class ChatRoomsController < ApplicationController
 
     if @chat_room_new.save
       flash[:notice] = "Chat begun!"
+
+      (@chat_room_new.users.uniq - [current_user]).each do |u|
+        Notification.create(recipient: u, actor: current_user, action: "Chat Started", notifiable: @chat_room_new)
+      end
+
       redirect_to @chat_room_new
     end
   end

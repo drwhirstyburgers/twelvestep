@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181120193712) do
+ActiveRecord::Schema.define(version: 20181123210211) do
 
   create_table "chat_room_users", force: :cascade do |t|
     t.integer "user_id"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20181120193712) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "terms", force: :cascade do |t|
     t.text "body"
     t.boolean "agree"
@@ -74,14 +85,12 @@ ActiveRecord::Schema.define(version: 20181120193712) do
     t.string "catchphrase"
     t.text "bio"
     t.datetime "last_seen"
-    t.boolean "terms_of_service", default: false
     t.integer "role"
     t.index ["bio"], name: "index_users_on_bio"
     t.index ["catchphrase"], name: "index_users_on_catchphrase"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
-    t.index ["terms_of_service"], name: "index_users_on_terms_of_service"
     t.index ["username"], name: "index_users_on_username", unique: true
     t.index ["years_sober"], name: "index_users_on_years_sober"
   end
