@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :favorited_users, through: :favorites, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :terms
+  has_many :notifications, as: :recipient
 
   validates :bio, length: { maximum: 500 }, presence: true
   validates :catchphrase, length: { in: 5..90 }, presence: true
