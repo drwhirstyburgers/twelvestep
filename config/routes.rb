@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   resources :chat_rooms, only: [:new, :create, :show, :index, :destroy]
 
-  resources :notifications
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 
   match "/chat_rooms" => "chat_rooms#create", :as => "create_chat", via: [:get, :post]
 

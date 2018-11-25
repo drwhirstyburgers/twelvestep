@@ -53,3 +53,4 @@ gem 'coffee-rails'
 gem 'devise_lastseenable'
 gem 'whenever', require: false
 gem 'faker'
+gem "font-awesome-rails"

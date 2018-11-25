@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_notifications
+    @notifications = Notification.where(recipient: current_user).recent
+  end
+
   protected
 
   def configure_permitted_parameters
