@@ -57,6 +57,24 @@ class ChatRoomsController < ApplicationController
     end
   end
 
+  def help
+    @chat_room = ChatRoom.new
+    users = User.all
+    user = users.sample
+    @chat_room.users.push(current_user, user)
+    @chat_room.title = user.username
+
+    if @chat_room.save
+      flash[:notice] = "Chat begun!"
+
+      (@chat_room.users.uniq - [current_user]).each do |u|
+        Notification.create(recipient: u, actor: current_user, action: "started", notifiable: @chat_room_new)
+      end
+
+      redirect_to @chat_room
+    end
+  end
+
   private
 
   def chat_room_params

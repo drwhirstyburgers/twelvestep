@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources :terms, only: [:new, :create]
   end
 
-  resources :chat_rooms, only: [:new, :create, :show, :index, :destroy]
+  resources :chat_rooms, only: [:new, :create, :show, :index, :destroy] do
+    collection do
+      post :help
+    end
+  end
 
   resources :notifications do
     collection do
