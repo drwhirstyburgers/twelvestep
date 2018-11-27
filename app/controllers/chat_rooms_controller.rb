@@ -59,7 +59,7 @@ class ChatRoomsController < ApplicationController
 
   def help
     @chat_room = ChatRoom.new
-    users = User.all
+    users = User.where.not(id: current_user.id).where(role: "stepper")
     user = users.sample
     @chat_room.users.push(current_user, user)
     @chat_room.title = user.username
@@ -68,7 +68,7 @@ class ChatRoomsController < ApplicationController
       flash[:notice] = "Chat begun!"
 
       (@chat_room.users.uniq - [current_user]).each do |u|
-        Notification.create(recipient: u, actor: current_user, action: "started", notifiable: @chat_room_new)
+        Notification.create(recipient: u, actor: current_user, action: "started", notifiable: @chat_room)
       end
 
       redirect_to @chat_room
