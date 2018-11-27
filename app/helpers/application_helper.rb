@@ -10,7 +10,7 @@ module ApplicationHelper
     return "tablet" if agent =~ /(tablet|ipad)|(android(?!.*mobile))/i
     return "mobile" if agent =~ /Mobile/
     return "desktop"
-  end
+  end    
 
   def resource_name
    :user

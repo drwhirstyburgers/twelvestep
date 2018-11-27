@@ -1,6 +1,8 @@
 <div class="contain-chat">
   <% if current_user.username == @chat_room.title %>
-    <h1><%= @chat_room.users.first.username %></h1>
+    <% (@chat_room.users.uniq - [current_user]).each do |u| %>
+      <h1><%= u.username %></h1>
+    <% end %>
   <% else %>
     <h1><%= @chat_room.title %></h1>
   <% end %>
